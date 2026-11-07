@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    background: #101319;
+    color: #f2f3f5;
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-ink font-sans text-fg antialiased;
+    margin: 0;
+  }
+  ::selection {
+    background: #e10600;
+    color: #fff;
+  }
+  :focus-visible {
+    outline: 2px solid #e10600;
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-8;
+  }
+  .eyebrow {
+    @apply font-display text-sm font-semibold uppercase tracking-[0.28em] text-apex;
+  }
+  .section-title {
+    @apply font-display text-4xl font-bold uppercase leading-none tracking-tight sm:text-5xl;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 font-display text-base font-bold uppercase tracking-widest transition duration-200;
+  }
+  .btn-primary {
+    @apply btn bg-apex text-white hover:shadow-glow hover:brightness-110;
+  }
+  .btn-ghost {
+    @apply btn border border-white/25 text-fg hover:border-apex hover:text-white;
+  }
+  .surface {
+    @apply border border-line bg-card;
+  }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, #1c222d 25%, #252d3b 37%, #1c222d 63%);
+  background-size: 400% 100%;
+  animation: shimmer 1.4s ease infinite;
+}
+@keyframes shimmer {
+  0% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton {
+    animation: none;
+  }
+}
