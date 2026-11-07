@@ -7,11 +7,23 @@ from typing import Any, Protocol
 
 
 class HistoricalDataProvider(Protocol):
-    """Season/historical data (drivers, constructors, circuits, races, results)."""
+    """Season/historical data (drivers, constructors, circuits, races, results, standings)."""
 
     name: str
 
     async def fetch_season_schedule(self, year: int) -> list[dict[str, Any]]: ...
+
+    async def fetch_circuits(self, year: int | None = None) -> list[dict[str, Any]]: ...
+
+    async def fetch_drivers(self, year: int | None = None) -> list[dict[str, Any]]: ...
+
+    async def fetch_constructors(self, year: int | None = None) -> list[dict[str, Any]]: ...
+
+    async def fetch_race_results(self, year: int, round_number: int | None = None) -> list[dict[str, Any]]: ...
+
+    async def fetch_driver_standings(self, year: int) -> list[dict[str, Any]]: ...
+
+    async def fetch_constructor_standings(self, year: int) -> list[dict[str, Any]]: ...
 
 
 class LiveDataProvider(Protocol):

@@ -6,7 +6,15 @@ from fastapi.responses import JSONResponse
 
 from app.core.config import get_settings
 from app.core.logging import configure_logging
-from app.routers import health
+from app.routers import (
+    circuits_router,
+    drivers_router,
+    health_router,
+    races_router,
+    seasons_router,
+    standings_router,
+    sync_router,
+)
 
 settings = get_settings()
 configure_logging(settings.log_level)
@@ -19,7 +27,7 @@ def create_app() -> FastAPI:
     app.add_middleware(
         CORSMiddleware,
         allow_origins=settings.cors_origin_list,
-        allow_methods=["GET"],
+        allow_methods=["GET", "POST"],
         allow_headers=["*"],
     )
 
@@ -28,8 +36,14 @@ def create_app() -> FastAPI:
         logger.exception("Unhandled error on %s", request.url.path)
         return JSONResponse(status_code=500, content={"detail": "Internal server error"})
 
-    # Versioned API. New modules (drivers, circuits, races, ...) register here.
-    app.include_router(health.router, prefix=settings.api_v1_prefix)
+    # Versioned API routes
+    app.include_router(health_router, prefix=settings.api_v1_prefix)
+    app.include_router(seasons_router, prefix=settings.api_v1_prefix)
+    app.include_router(circuits_router, prefix=settings.api_v1_prefix)
+    app.include_router(drivers_router, prefix=settings.api_v1_prefix)
+    app.include_router(races_router, prefix=settings.api_v1_prefix)
+    app.include_router(standings_router, prefix=settings.api_v1_prefix)
+    app.include_router(sync_router, prefix=settings.api_v1_prefix)
 
     return app
 

@@ -63,20 +63,19 @@ apex-atlas/
 
 ## Data principles
 
-- Season statistics, results, and dates are never hardcoded. Until Phase 2 wires real data, homepage sections
-  show explicit empty states and stat cards show "—".
+- Season statistics, results, and dates are never hardcoded. Verified data is ingested directly from the Jolpica Ergast API into PostgreSQL.
 - Circuit geometry, DRS zones, elevation and lap records will only be shown when sourced from verified data.
 - Provider access goes through `backend/app/integrations`, so Jolpica (Phase 2) and OpenF1 (Phase 7) stay
   swappable behind a normalized internal model.
 
 ## Roadmap
 
-1. **Foundation** (this commit)
-2. Data integration (Jolpica → PostgreSQL)
-3. Circuit Explorer
-4. Driver Explorer
-5. Calendar and analytics
-6. Advanced experience
-7. Live Race Center (OpenF1, WebSockets, Redis)
+1. [x] **Foundation** (FastAPI, React + TypeScript, PostgreSQL, health checks)
+2. [x] **Data integration** (Jolpica → PostgreSQL, sync pipeline, REST API, live homepage data)
+3. [ ] **Circuit Explorer** (Interactive track maps, MapLibre GL, DRS zones, elevation profiles)
+4. [ ] **Driver Explorer** (Career breakdowns, head-to-head comparisons)
+5. [ ] **Calendar and analytics** (Interactive race weekends, Recharts progression)
+6. [ ] **Advanced experience** (Three.js 3D track/car models)
+7. [ ] **Live Race Center** (OpenF1, WebSockets, Redis)
 
 See [docs/architecture.md](docs/architecture.md).

@@ -8,8 +8,8 @@ export interface AsyncState<T> {
   reload: () => void
 }
 
-/** Runs an async loader on mount (and on reload) and tracks loading/error state. */
-export function useAsync<T>(loader: () => Promise<T>): AsyncState<T> {
+/** Runs an async loader on mount (and whenever deps change or on reload) and tracks loading/error state. */
+export function useAsync<T>(loader: () => Promise<T>, deps: unknown[] = []): AsyncState<T> {
   const [data, setData] = useState<T | null>(null)
   const [error, setError] = useState<string | null>(null)
   const [loading, setLoading] = useState(true)
@@ -27,7 +27,7 @@ export function useAsync<T>(loader: () => Promise<T>): AsyncState<T> {
       cancelled = true
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [tick])
+  }, [tick, ...deps])
 
   const reload = useCallback(() => setTick((t) => t + 1), [])
   return { data, error, loading, reload }
