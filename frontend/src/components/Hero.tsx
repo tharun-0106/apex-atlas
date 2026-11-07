@@ -35,7 +35,7 @@ function SpeedLines() {
 
 export default function Hero() {
   return (
-    <section className="relative isolate flex min-h-[92vh] items-end overflow-hidden pt-16">
+    <section className="relative isolate flex min-h-[92vh] items-end overflow-hidden pb-0 pt-32">
       <div
         className="absolute inset-0 -z-10"
         style={{
@@ -43,7 +43,11 @@ export default function Hero() {
             'radial-gradient(ellipse 70% 60% at 75% 35%, rgba(225,6,0,0.22), transparent 60%), linear-gradient(180deg, #161D29 0%, #101319 100%)',
         }}
       />
-      <div className="absolute inset-0 -z-10">
+      {/* Lines fade out toward the left so they never cross the headline or buttons. */}
+      <div
+        className="absolute inset-0 -z-10 opacity-70 [mask-image:linear-gradient(to_right,transparent_45%,black_85%)] [-webkit-mask-image:linear-gradient(to_right,transparent_45%,black_85%)]"
+        aria-hidden="true"
+      >
         <SpeedLines />
       </div>
       <div className="absolute inset-x-0 bottom-0 -z-10 h-48 bg-gradient-to-t from-ink to-transparent" />
