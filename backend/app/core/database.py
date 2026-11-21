@@ -13,12 +13,17 @@ from app.core.config import get_settings
 
 
 class Base(DeclarativeBase):
-    """Declarative base for all ORM models (populated from Phase 2)."""
+    """Declarative base for all ORM models."""
 
 
 @lru_cache
 def get_engine() -> Engine:
-    return create_engine(get_settings().database_url, pool_pre_ping=True, future=True)
+    return create_engine(
+        get_settings().database_url,
+        connect_args={"connect_timeout": 2},
+        pool_pre_ping=True,
+        future=True,
+    )
 
 
 @lru_cache

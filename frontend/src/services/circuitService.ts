@@ -1,4 +1,4 @@
-import { CircuitResponse } from '../types/api'
+import { CircuitDetailResponse, CircuitResponse } from '../types/api'
 import { http } from './http'
 
 export async function getCircuits(country?: string, limit = 100): Promise<CircuitResponse[]> {
@@ -10,5 +10,10 @@ export async function getCircuits(country?: string, limit = 100): Promise<Circui
 
 export async function getCircuit(ref: string): Promise<CircuitResponse> {
   const { data } = await http.get<CircuitResponse>(`/circuits/${ref}`)
+  return data
+}
+
+export async function getCircuitDetails(ref: string): Promise<CircuitDetailResponse> {
+  const { data } = await http.get<CircuitDetailResponse>(`/circuits/${ref}/details`)
   return data
 }

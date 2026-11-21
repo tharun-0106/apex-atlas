@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy.orm import Session
 
 from app.core.database import get_db
-from app.schemas.circuit import CircuitResponse
+from app.schemas.circuit import CircuitDetailResponse, CircuitResponse
 from app.services.circuits import CircuitService
 
 router = APIRouter(prefix="/circuits", tags=["circuits"])
@@ -26,3 +26,12 @@ def get_circuit_by_ref(circuit_ref: str, db: Session = Depends(get_db)) -> Circu
     if not circuit:
         raise HTTPException(status_code=404, detail=f"Circuit '{circuit_ref}' not found")
     return circuit
+
+
+@router.get("/{circuit_ref}/details", response_model=CircuitDetailResponse)
+def get_circuit_details(circuit_ref: str, db: Session = Depends(get_db)) -> CircuitDetailResponse:
+    service = CircuitService(db)
+    details = service.get_circuit_details(circuit_ref)
+    if not details:
+        raise HTTPException(status_code=404, detail=f"Circuit '{circuit_ref}' not found")
+    return CircuitDetailResponse(**details)

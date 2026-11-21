@@ -13,3 +13,14 @@ class CircuitService:
 
     def list_circuits(self, country: str | None = None, limit: int = 100, offset: int = 0) -> list[Circuit]:
         return self.repo.list_all(country=country, limit=limit, offset=offset)
+
+    def get_circuit_details(self, ref: str) -> dict | None:
+        circuit = self.repo.get_by_ref(ref)
+        if not circuit:
+            return None
+        races = self.repo.get_races_at_circuit(circuit.id)
+        return {
+            "circuit": circuit,
+            "races": races,
+            "total_races": len(races),
+        }

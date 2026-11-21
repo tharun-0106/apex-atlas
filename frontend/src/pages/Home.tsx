@@ -349,7 +349,7 @@ export default function Home() {
                   <p className="mt-1 text-xs text-muted">{c.location ?? '—'}</p>
                   <div className="mt-4 flex items-center justify-between text-xs text-muted/80 border-t border-line/30 pt-3">
                     <span className="font-mono text-[11px]">{c.latitude ? `${c.latitude.toFixed(2)}°N` : ''}</span>
-                    <Link to="/circuits" className="font-semibold text-apex hover:underline">
+                    <Link to={`/circuits/${c.circuit_ref}`} className="font-semibold text-apex hover:underline">
                       View Track →
                     </Link>
                   </div>

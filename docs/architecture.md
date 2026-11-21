@@ -33,7 +33,7 @@ hook, which standardizes loading and error states (`LoadingSkeleton`, `ErrorStat
 
 - [x] **Phase 1: Foundation** (FastAPI, React + TypeScript, PostgreSQL, health checks)
 - [x] **Phase 2: Data Integration** (Jolpica client, schema migrations, sync pipeline, REST API endpoints, live homepage data)
-- [ ] **Phase 3: Circuit Explorer** (Interactive track maps, telemetry coordinates, DRS zones, circuit detail views)
+- [x] **Phase 3: Circuit Explorer** (Interactive SVG track maps, technical telemetry specs, DRS activation zones, search/region filtering, and circuit detail views with historical winners archive)
 - [ ] **Phase 4: Driver & Constructor Explorer** (Profiles, head-to-head records, career breakdowns)
 - [ ] **Phase 5: Calendar & Analytics** (Interactive race weekends, countdown timers, Recharts championship progression)
 - [ ] **Phase 6: Advanced Experience** (Three.js 3D track/car visualizations)

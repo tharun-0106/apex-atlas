@@ -26,6 +26,26 @@ export interface CircuitResponse {
   url: string | null
 }
 
+export interface CircuitRaceHistoryItem {
+  race_id: number
+  season_year: number
+  round: number
+  name: string
+  date: string
+  winner_driver: string | null
+  winner_driver_ref: string | null
+  winner_code: string | null
+  winner_constructor: string | null
+  winner_constructor_ref: string | null
+  winner_time: string | null
+}
+
+export interface CircuitDetailResponse {
+  circuit: CircuitResponse
+  races: CircuitRaceHistoryItem[]
+  total_races: number
+}
+
 export interface DriverResponse {
   id: number
   driver_ref: string

@@ -13,7 +13,7 @@ class Settings(BaseSettings):
     log_level: str = "INFO"
     api_v1_prefix: str = "/api/v1"
 
-    database_url: str = "postgresql+psycopg://apex:apex@localhost:5432/apex_atlas"
+    database_url: str = "postgresql+psycopg://apex:apex@localhost:5433/apex_atlas?connect_timeout=2"
     cors_origins: str = "http://localhost:5173,http://127.0.0.1:5173"
 
     jolpica_base_url: str = "https://api.jolpi.ca/ergast/f1"

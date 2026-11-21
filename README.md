@@ -72,7 +72,7 @@ apex-atlas/
 
 1. [x] **Foundation** (FastAPI, React + TypeScript, PostgreSQL, health checks)
 2. [x] **Data integration** (Jolpica → PostgreSQL, sync pipeline, REST API, live homepage data)
-3. [ ] **Circuit Explorer** (Interactive track maps, MapLibre GL, DRS zones, elevation profiles)
+3. [x] **Circuit Explorer** (Interactive SVG track maps, telemetry coordinates, DRS zones, search/region filtering, and circuit detail views)
 4. [ ] **Driver Explorer** (Career breakdowns, head-to-head comparisons)
 5. [ ] **Calendar and analytics** (Interactive race weekends, Recharts progression)
 6. [ ] **Advanced experience** (Three.js 3D track/car models)
